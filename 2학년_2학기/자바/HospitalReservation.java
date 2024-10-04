@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// TODO : reservationFunc() 예외처리, printStatus()완성
+// TODO : [완료!]reservationFunc() 예외처리, [완료!]printStatus()완성
 public class HospitalReservation {
     public static void main(String[] args)
     {
@@ -15,6 +15,7 @@ public class HospitalReservation {
         };
 
         int[][] reservationNum = {
+            {0, 0, 0},
             {0, 0, 0},
             {0, 0, 0},
             {0, 0, 0}
@@ -36,7 +37,7 @@ public class HospitalReservation {
 
             else if(task == 2)
             {
-                
+                printStatus(departments, timeSlots, reservationNum);
             }
 
             else if(task == 3)
@@ -82,8 +83,14 @@ public class HospitalReservation {
         }
 
         System.out.println(" : ");
-
         index_depart = s.nextInt();
+
+        if (index_depart < 0 || index_depart > 3)
+        {
+            System.out.println("잘못된 번호를 입력했습니다. 처음부터 다시 입력해주세요.");
+            return true;
+        }
+
         int index_time;
 
         System.out.println("진료 시간 : ");
@@ -93,11 +100,18 @@ public class HospitalReservation {
         }
         System.out.print(" : ");
 
-        index_time = s.nextInt();        
+        index_time = s.nextInt(); 
+        if (index_time < 0 || index_time > 2)
+        {
+            System.out.println("잘못된 번호를 입력했습니다. 처음부터 다시 입력해주세요.");
+            return true;
+        }
+
+        
     
         if (reservationNum[index_depart][index_time] <= 3)
         {
-            System.out.printf("%s의 %s시간으로 예약 되었습니다!", departments[index_depart], timeSlots[index_depart][index_time]);
+            System.out.printf("%s의 %s시간으로 예약 되었습니다!\n", departments[index_depart], timeSlots[index_depart][index_time]);
             reservationNum[index_depart][index_time] += 1;
 
             return false;
@@ -113,5 +127,18 @@ public class HospitalReservation {
     // 2. 예약 현황 보기 를 입력했을 경우
     public static void printStatus(String[] departments, String[][] timeSlots, int[][] reservationNum)
     {
+        int index_depart;
+        int index_time;
+
+        for(index_depart = 0; index_depart < departments.length; index_depart++)
+        {
+            System.out.printf("%s\n", departments[index_depart]);
+            
+            for(index_time = 0; index_time < timeSlots[index_depart].length; index_time++)
+            {
+                System.out.printf("%s : %d/3    ", timeSlots[index_depart][index_time], reservationNum[index_depart][index_time]);
+            }
+            System.out.println();
+        }
     }
 }
