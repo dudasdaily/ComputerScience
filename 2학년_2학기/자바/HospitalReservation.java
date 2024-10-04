@@ -109,7 +109,7 @@ public class HospitalReservation {
 
         
     
-        if (reservationNum[index_depart][index_time] <= 3)
+        if (reservationNum[index_depart][index_time] < 3)
         {
             System.out.printf("%s의 %s시간으로 예약 되었습니다!\n", departments[index_depart], timeSlots[index_depart][index_time]);
             reservationNum[index_depart][index_time] += 1;
