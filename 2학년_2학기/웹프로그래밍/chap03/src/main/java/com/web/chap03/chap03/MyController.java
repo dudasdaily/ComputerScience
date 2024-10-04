@@ -23,9 +23,10 @@ public class MyController {
     }
 
     @PostMapping("/ex01/answer")
-    public String ex01Answer(@RequestParam(name="name") String name, Model mo)
-    {
+    public String ex01Answer(@RequestParam(name="name") String name, @RequestParam(name="pw") String pw, Model mo)
+    { 
         mo.addAttribute("name", name);
+        mo.addAttribute("pw", pw);
         return "ex01Answer";
     }
 
