@@ -31,7 +31,7 @@ public class MovieRating {
 
             s.nextLine();
 
-            avgRating[i] = sum / text.length;
+            avgRating[i] = sum / (double)text.length;
 
             System.out.println();
         }
