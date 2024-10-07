@@ -21,7 +21,7 @@ public class MovieRating {
 
             int sum = 0;
 
-            for(int j = 0; j < 5; j++)
+            for(int j = 0; j < text.length; j++)
             {
                 System.out.print(text[j]);
                 rating[i][j] = s.nextInt();
@@ -31,7 +31,7 @@ public class MovieRating {
 
             s.nextLine();
 
-            avgRating[i] = sum / 5.0;
+            avgRating[i] = sum / text.length;
 
             System.out.println();
         }
