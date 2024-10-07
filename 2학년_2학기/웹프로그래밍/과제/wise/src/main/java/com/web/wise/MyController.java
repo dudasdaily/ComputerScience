@@ -23,6 +23,21 @@ public class MyController {
         return "wiseAnswer";
     }
     
+    @GetMapping("/bread")
+    public String bread()    
+    {
+        return "bread";
+    }
+
+    @PostMapping("/bread/answer")
+    public String breadAnswer(@RequestParam("bread") String bread, @RequestParam("price") Integer price, @RequestParam("amount") Integer amount, Model mo)
+    {
+        mo.addAttribute("bread", bread);
+        mo.addAttribute("amount", amount);
+        mo.addAttribute("price", price * amount);
+
+        return "breadAnswer";
+    }
 
 
 }
