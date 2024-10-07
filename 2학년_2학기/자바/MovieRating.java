@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+// TODO : 카테고리 평점 범위 제한
 public class MovieRating {
     static public void main(String args[])
     {
