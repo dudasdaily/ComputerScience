@@ -56,4 +56,16 @@ public class MyController {
         return "ex02Answer";
     }
 
+    @GetMapping("/ex03")
+    public String ex03() {
+        return "ex03";
+    }
+
+    @PostMapping("/ex03/answer")
+    public String ex03Answer(@RequestParam("mname") String mname, @RequestParam("color") String color, Model mo) {
+        mo.addAttribute("mname", mname);
+        mo.addAttribute("color", color);
+        return "ex03Answer";
+    }
+    
 }
