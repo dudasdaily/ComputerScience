@@ -26,4 +26,9 @@ public class MyController {
     public String memberTable() {
         return "memberTable";
     }
+
+    @GetMapping("/practice")
+    public String practice() {
+        return "practice";
+    }
 }
