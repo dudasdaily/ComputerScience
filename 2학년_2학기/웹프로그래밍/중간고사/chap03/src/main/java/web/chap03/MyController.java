@@ -1,5 +1,6 @@
 package web.chap03;
 
+import java.util.ArrayList;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -59,5 +60,18 @@ public class MyController {
         mo.addAttribute("name", name);
         mo.addAttribute("color", color);
         return "ex03Answer";
+    }
+
+    @GetMapping("/ex04")
+    public String ex04(Model mo) {
+        var arr = new ArrayList<String>();
+
+        arr.add("고흐");
+        arr.add("james");
+        arr.add("dooli");
+        arr.add("bread");
+
+        mo.addAttribute("arr", arr);
+        return "ex04";
     }
 }
