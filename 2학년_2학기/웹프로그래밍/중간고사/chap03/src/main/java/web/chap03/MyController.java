@@ -74,4 +74,10 @@ public class MyController {
         mo.addAttribute("arr", arr);
         return "ex04";
     }
+
+    @GetMapping("practice")
+    public String practice() {
+        return "practice";
+    }
+    
 }
