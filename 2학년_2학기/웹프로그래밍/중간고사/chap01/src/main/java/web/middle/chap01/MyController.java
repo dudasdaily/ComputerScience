@@ -22,4 +22,8 @@ public class MyController {
         return "register";
     }
     
+    @GetMapping("/memberTable")
+    public String memberTable() {
+        return "memberTable";
+    }
 }
