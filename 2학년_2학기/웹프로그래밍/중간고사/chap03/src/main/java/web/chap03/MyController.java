@@ -5,6 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 @Controller
 public class MyController {
@@ -22,6 +24,30 @@ public class MyController {
     public String ex01Answer(@RequestParam(name = "id") String id, Model mo) {
         mo.addAttribute("id", id);       
         return "ex01Answer";
+    }
+
+    @GetMapping("/ex02")
+    public String ex02() {
+        return "ex02";
+    }
+    
+    
+    @PostMapping("/ex02/answer")
+    public String ex02Answer(@RequestParam("name") String name, 
+                             @RequestParam("position") String position, Model mo) {
+        mo.addAttribute("name", name);
+        mo.addAttribute("position", position);
+
+        int salary = 0;
+        switch(position) {
+            case "사원" -> salary = 3500; 
+            case "대리" -> salary = 5000; 
+            case "팀장" -> salary = 7000; 
+            case "임원" -> salary = 9900; 
+        }
+        mo.addAttribute("salary", salary);
+
+        return "ex02Answer";
     }
     
     
