@@ -5,7 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import java.util.ArrayList;
 
 @Controller
 public class MyController {
@@ -67,5 +67,19 @@ public class MyController {
         mo.addAttribute("color", color);
         return "ex03Answer";
     }
-    
+
+    @GetMapping("/ex04")
+    public String ex04(Model mo)
+    {
+        var arr = new ArrayList<String>();
+
+        arr.add("고흐");
+        arr.add("james");
+        arr.add("dooli");
+        arr.add("bread");
+
+        mo.addAttribute("arr", arr);
+
+        return "ex04";
+    }    
 }

@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-Chap03Application<chap03>",
             "request": "launch",
             "cwd": "${workspaceFolder}",
