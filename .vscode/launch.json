@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Chap04Application",
+            "request": "launch",
+            "mainClass": "web.chap04.Chap04Application",
+            "projectName": "chap04"
+        },
+        {
+            "type": "java",
             "name": "test",
             "request": "launch",
             "mainClass": "test",
