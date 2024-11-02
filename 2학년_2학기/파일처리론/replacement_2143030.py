@@ -1,9 +1,5 @@
 buffer_size = 5
-buffer = [0 for i in range(buffer_size)]
-
-runs = []
-freeze_cnt = 0
-runs_num = -1
+# buffer = [0 for i in range(buffer_size)]
 
 class Freeze():
     def __init__(self, value):
@@ -15,8 +11,6 @@ class Freeze():
 def find_min(buffer : list):
     if len(buffer) == 0:
         return
-              
-
 
 write_file = open("G:/다른 컴퓨터/내 컴퓨터/2학년 2학기/파일처리론/파일처리론 과제/replacement_output.txt", "w")
 
@@ -24,10 +18,16 @@ with open("G:/다른 컴퓨터/내 컴퓨터/2학년 2학기/파일처리론/파
     cases_num = int(read_file.readline()) # 4
 
     for i in range(cases_num):
+        buffer = []
+        runs = []
+        runs_num = -1
+        freeze_cnt = 0
+        
         element_num = read_file.readline() # 원소 개수
         elements = list(map(int, read_file.readline().strip().split())) # 입력 값을 읽음
 
         # 레코드의 수가 버퍼 크기보다 작거나 같을 경우
+        # 그냥 sort하고 파일 write
         if len(elements) <= buffer_size:
             runs_num += 1
             elements.sort()
@@ -55,9 +55,13 @@ with open("G:/다른 컴퓨터/내 컴퓨터/2학년 2학기/파일처리론/파
 
                 # 버퍼에 레코드 1개 채우기
                 buffer.append(Freeze(elements.pop(0)))
-                if buffer[len(buffer) - 1] < current_num:
+
+                # 버퍼에 읽은 값이 가장 마지막에 넣은 값보다 작은 경우
+                if buffer[len(buffer) - 1].value < current_num:
                     buffer[len(buffer) - 1].is_freeze = True
                     freeze_cnt += 1
+                
+                
 
 
 
