@@ -1,72 +1,109 @@
+from asyncio.windows_events import NULL
+
+
 buffer_size = 5
 # buffer = [0 for i in range(buffer_size)]
 
-class Freeze():
-    def __init__(self, value):
+# 값의 최대값
+max_value = 100
+
+
+class Freeze:
+    def __init__(self, value: int, freeze=False):
         self.value = value
-        self.is_freeze = False
+        self.is_freeze = freeze
+
 
 # get index of minimum element in list
 # TO-DO : buffer중에서 freeze된 것 빼고 최소값 찾기
-def find_min(buffer : list):
-    if len(buffer) == 0:
-        return
+def find_min(buffer: list):
+    min_value = max_value + 1
+    min_index = -1
 
-write_file = open("G:/다른 컴퓨터/내 컴퓨터/2학년 2학기/파일처리론/파일처리론 과제/replacement_output.txt", "w")
+    for i in range(len(buffer)):
+        if not buffer[i].is_freeze and buffer[i].value < min_value:
+            min_value = buffer[i].value
+            min_index = i
 
-with open("G:/다른 컴퓨터/내 컴퓨터/2학년 2학기/파일처리론/파일처리론 과제/replacement_input.txt", "r") as read_file:
-    cases_num = int(read_file.readline()) # 4
+    return min_index
 
-    for i in range(cases_num):
+
+write_file = open("C:/Users/dudas/OneDrive/바탕 화면/test.txt", "w")
+
+
+with open(
+    "C:/DUDA/대학/2학년 2학기/파일처리론/파일처리론 과제/replacement_input.txt", "r"
+) as read_file:
+    cases_num = int(read_file.readline())  # 4
+
+    for _ in range(cases_num):
+        # buffer = [None] * buffer_size
         buffer = []
-        runs = []
-        runs_num = -1
+        runs = [[]]
+        runs_idx = 0
         freeze_cnt = 0
-        
-        element_num = read_file.readline() # 원소 개수
-        elements = list(map(int, read_file.readline().strip().split())) # 입력 값을 읽음
 
-        # 레코드의 수가 버퍼 크기보다 작거나 같을 경우
-        # 그냥 sort하고 파일 write
-        if len(elements) <= buffer_size:
-            runs_num += 1
-            elements.sort()
-            write_file.write(runs_num)
-            write_file.write(" ".join(map(str, elements)))
+        element_num = int(read_file.readline())  # 원소 개수
+        line = read_file.readline()  # str 한줄 읽기
 
-        else:
-            # 버퍼 채우기
-            for i in range(buffer_size):
-                buffer[i] = Freeze(elements.pop(0))
-            
-            # 입력 레코드가 남아 있을경우
-            while(len(elements) > 0):
-                # 최초 실행이거나 버퍼가 완전히 동결된 경우
-                if(runs_num == -1 or freeze_cnt == 5):
+        pharse_num = ""
+        current_num = NULL
+
+        for i in range(len(line)):
+            # 버퍼가 꽉 찬 경우
+            if len(buffer) == buffer_size:
+                # 버퍼가 다 동결 된 경우
+                if freeze_cnt == buffer_size:
                     runs.append([])
-                    runs_num += 1
-                
-                # 버퍼에서 최소값 인덱스 찾기
-                min_idx = find_min(buffer)
+                    runs_idx += 1
 
-                # 버퍼 최소값을 runs에 추가 하고 current_num 갱신
-                current_num = buffer.pop(min_idx)
-                runs[runs_num].append(current_num)
+                    for j in range(len(buffer)):
+                        buffer[j].is_freeze = False
+                    freeze_cnt = 0
 
-                # 버퍼에 레코드 1개 채우기
-                buffer.append(Freeze(elements.pop(0)))
+                    min_idx = find_min(buffer)
+                    current_num = buffer.pop(min_idx).value
+                    runs[runs_idx].append(current_num)
 
-                # 버퍼에 읽은 값이 가장 마지막에 넣은 값보다 작은 경우
-                if buffer[len(buffer) - 1].value < current_num:
-                    buffer[len(buffer) - 1].is_freeze = True
+                else:
+                    min_idx = find_min(buffer)
+                    current_num = buffer.pop(min_idx).value
+                    runs[runs_idx].append(current_num)
+
+            # 버퍼 채우기
+            if line[i] == " " or i == len(line) - 1:
+                # 버퍼에 들어오는 값이 동결해야되는 값일 경우
+                if pharse_num and (current_num != NULL) and (int(pharse_num) < current_num):
+                    buffer.append(Freeze(int(pharse_num), True))
                     freeze_cnt += 1
+                    pharse_num = ""
                 
+                elif pharse_num:
+                    buffer.append(Freeze(int(pharse_num)))
+                    pharse_num = ""
+
+            else:
+                pharse_num += line[i]
+        
+        # 입력파일을 다 읽고 버퍼가 남은 경우
+        while buffer:
+            if freeze_cnt == len(buffer):
+                runs.append([])
+                runs_idx += 1
+
+                for k in range(len(buffer)):
+                    buffer[k].is_freeze = False
+                freeze_cnt = 0
                 
-
-
-
-
+                min_idx = find_min(buffer)
+                current_num = buffer.pop(min_idx).value
+                runs[runs_idx].append(current_num)
             
-            
+            else:
+                min_idx = find_min(buffer)
+                current_num = buffer.pop(min_idx).value
+                runs[runs_idx].append(current_num)
+        
+        write_file.write(str(len(runs)) + "\n")
 
 write_file.close()
