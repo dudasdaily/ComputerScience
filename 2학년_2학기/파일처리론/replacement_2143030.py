@@ -42,8 +42,9 @@ with open(input_path, "r") as read_file:
         pharse_num = ""
         current_num = None
 
+        # 버퍼 생성 및 runs생성
         for i in range(len(line)):
-            # 버퍼가 꽉 찬 경우
+               # 버퍼가 꽉 찬 경우
             if len(buffer) == buffer_size:
                 # 버퍼가 다 동결 된 경우
                 if freeze_cnt == buffer_size:
@@ -80,6 +81,7 @@ with open(input_path, "r") as read_file:
         
         # 입력파일을 다 읽고 버퍼가 남은 경우
         while buffer:
+            # 버퍼에 남은 값이 다 동결되어있는 경우
             if freeze_cnt == len(buffer):
                 runs.append([])
                 runs_idx += 1
@@ -100,6 +102,7 @@ with open(input_path, "r") as read_file:
         # 생성된 Runs 숫자 쓰기
         write_file.write(str(len(runs)) + "\n")
 
+        # runs[0], runs[1], ... 작성
         for i in range(len(runs)):
             for j in range(len(runs[i])):
                 if j != (len(runs[i]) - 1):
