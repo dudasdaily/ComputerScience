@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>구매 영수증</title>
+    <style>
+        body {background-color: aqua;}
+        #td1 {color:blue; font-weight: bolder;}
+        #td4 {color:red; text-align: right;}
+
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h3>과일 구매 목록</h3>
+        <table border="1">
+            <tr> <th>구매번호 <th>id <th>과일 <th>수량 <th>구매일시
+            
+            <tr th:each="a:${arr}">
+                <td th:text="${a.no}" id="td1"></td>
+                <td th:text="${a.mid}"></td>
+                <td th:text="${a.fruit}"></td>
+                <td th:text="${a.quantities}" id="td4"></td>
+                <td th:text="${a.date}"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
