@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>설문 결과</title>
+    <style>
+        body {background-color: green; font-weight: bold;}
+    </style>
+</head>
+<body>
+    <span th:text="${id}" style="color :blue;">id</span>님은
+    <p>
+    <span th:text="${color}" th:style="|color : ${f_color}; background-color : gray|">color</span>를 좋아하고,
+    <p>
+    <span th:text="${os}">os</span>를 좋아합니다.
+</body>
+</html>
