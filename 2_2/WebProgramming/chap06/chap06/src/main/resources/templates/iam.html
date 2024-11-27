@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>학번 이름</title>
+    <style>
+        h3 {
+            color: brown;
+        }
+
+        fieldset {
+            width: 400px;
+            border: 1px solid orange;
+            margin-bottom: 15px;
+        }
+
+        legend {
+            color: darkgray;
+            font-size: 0.8em;
+        }
+
+        textarea {
+            background: lightyellow;
+        }
+
+        button {
+            padding: 5px 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="post" action="/foods/report">
+        <h3>자기 소개</h3>
+        <fieldset>
+            <legend>성별과 나이를 입력하세요.</legend>
+            성별: <input type="radio" name="gender" value="남" checked>남자
+            <input type="radio" name="gender" value="여">여자<br>
+            나이: <input type="number" name="age" required>
+        </fieldset>
+
+        <fieldset>
+            <legend>좋아하는 음식을 선택하세요.(복수선택 가능)</legend>
+            <input type="checkbox" name="foods" value="마라탕">마라탕
+            <input type="checkbox" name="foods" value="햄버거">햄버거
+            <input type="checkbox" name="foods" value="콩나물국밥">콩나물국밥
+        </fieldset>
+
+        <fieldset>
+            <legend>좋아하는 정도</legend>
+            마루 <input type="range" name="maru" min="1" max="5" value="3"><br>
+            고양이 <input type="range" name="cat" min="1" max="5" value="3">
+        </fieldset>
+
+        <textarea name="comments" rows="4" cols="61" placeholder="Promote yourself"></textarea>
+        <p>
+            <button type="submit">작성완료</button> <button type="reset">새로작성</button>
+    </form>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 package web.surbey;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,11 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.servlet.http.HttpSession;
-import org.springframework.web.bind.annotation.RequestBody;
-
 
 @Controller
 public class MyController {
+    @Autowired private surveyRep sRep;
+
     @GetMapping("/login")
     public String login() {
         return "login";
@@ -53,6 +54,21 @@ public class MyController {
         mo.addAttribute("color", color);
         mo.addAttribute("os", os);
         
+        survey m = new survey();
+        m.id = id;
+        m.color = color;
+        m.os = os;
+
+        sRep.save(m);
+
         return "result";
     }
+
+    @GetMapping("/surveyList")
+    public String surveyList(Model mo) {
+        mo.addAttribute("arr", sRep.findAll());
+        
+        return "surveyList";
+    }
+    
 }

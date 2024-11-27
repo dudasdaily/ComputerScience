@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>최종 결과</title>
+    <style>
+        body {background-color: tomato; }
+
+        .td1 {color:blue; font-weight:bold;}
+        #td2 {color:gray; font-size:0.8em;}
+    </style>
+</head>
+<body>
+    <h3>투표 결과</h3>
+
+    <table border="1">
+        <tr></tr> <th>no</th> <th>id</th> <th>좋아하는 색깔</th> <th>좋아하는 os</th> <th>작성일시</th>
+        <tr th:each="a:${arr}">
+            <td th:text="${a.no}">no</td>
+            <td th:text="${a.id}" class="td1">id</td>
+            <td th:text="${a.color}">color</td>
+            <td th:text="${a.os}">os</td>
+            <td th:text="${a.wdate}" id="td2">wdate</td>
+        </tr>
+    </table>
+    <p>
+        <a href="/login">시작으로 돌아가기</a>
+</body>
+</html>
