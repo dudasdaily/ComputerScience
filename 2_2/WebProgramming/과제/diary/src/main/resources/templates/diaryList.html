@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>다이어리 리스트</title>
+    <style>
+        body { background-color: bisque;}
+        table { width : 800px; }
+        .td1 { color : blue; font-weight:bold; }
+        .td2 { color : gray; font-size:0.8em;}
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h3>📖My diary List📖</h3>
+        <table border="1">
+            <tr></tr> <th>no</th> <th>제목</th> <th>내용</th> <th>작성일지</th>
+            <tr th:each="a:${arr}">
+                <td th:text="${a.no}" id="td1">no</td>
+                <td th:text="${a.title}" class="td1">title</td>
+                <td th:text="${a.content}">content</td>
+                <td th:text="${a.wdate}" class="td2">wdate</td>
+            </tr>
+        </table><br>
+        <a href="/diary">작성 화면으로 돌아가기</a>
+    </div>
+</body>
+</html>

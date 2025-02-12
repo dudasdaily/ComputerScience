@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>결승전</title>
+    <style>
+        body {background-color : gray; }
+    </style>
+</head>
+<body>
+    <h2>Who is your favorite Star? (결승)</h2>
+    <div>
+        <form action="/star/winner">
+            <table>
+                <tr>
+                    <th><img th:src="|/${firstWinner}.png|"></th> <th><img th:src="|/${secondWinner}.png|"></th>
+                </tr>
+            </table>
+            <p></p>
+            <input type="submit" value="선택">
+        </form>
+    </div>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>설문 결과</title>
     <style>
-        body {background-color: green; font-weight: bold;}
+        body {background-color: green; font-weight: bold; background-image: url(/background_src.jpg);}
     </style>
 </head>
 <body>
@@ -13,5 +13,8 @@
     <span th:text="${color}" th:style="|color : ${f_color}; background-color : gray|">color</span>를 좋아하고,
     <p>
     <span th:text="${os}">os</span>를 좋아합니다.
+    <p>
+    
+    <a href="/surveyList">결과 보기</a>
 </body>
 </html>

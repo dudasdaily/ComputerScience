@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.tyhmeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Answer</title>
+    <style>
+        span { color:blue; font-weight:bold; }
+        body {background-color: burlywood;}
+    </style>
+</head>
+<body>
+    저는 <span th:text="${age}">age</span>세 <span th:text="${gender}">gender</span>학생입니다.
+    <p></p>
+    좋아하는 음식은 다음과 같습니다.<br>
+    <div th:each="food : ${foods}">
+        <span th:text="${food}">food</span>
+    </div>
+    <p></p>
+
+    저의 좋아하는 정도(1~5)는 다음과 같습니다.<br>
+    마루 : <span th:text="${maru}">maru</span>
+    <br>
+    고양이 : <span th:text="${cat}">cat</span>
+    <p></p>
+
+    <span id="comment" th:text="${comments}" style="color:black; font-weight:normal;">comment</span>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>시간표</title>
+    <style>
+        table { border : 1px solid black; }
+        th, td { border : 1px solid black; }
+        #tr1 { background-color: pink; }
+        .col0 { background-color: aqua; }
+    </style>
+</head>
+<body>
+    <h2><mark>시간표</mark></h2>
+
+    <table>
+        <tr id="tr1">
+            <th>교시</th> <th>월</th> <th>화</th> <th>수</th>
+        </tr>
+        <tr>
+            <th class="col0">1</th> <td>딥러닝</td> <td rowspan="2">테니스</td> <td rowspan="3">수학 x<sup>2</sup>+y<sup>2</sup>=1</td>
+        </tr>
+        <tr>
+            <th class="col0">2</th> <td>웹프로그래밍</td>
+        </tr>
+        <tr>
+            <th class="col0">3</th> <td>파일처리론</td> <td>이산수학</td>
+        </tr>
+        <tr>
+            <th class="col0">4</th> <th colspan="3">점심 및 휴게시간입니다!</th>
+        </tr>
+        <tr>
+            <th class="col0">5</th> <td>영어</td> <td>롤</td> <td>AI</td>
+        </tr>
+
+    </table>
+</body>
+</html>

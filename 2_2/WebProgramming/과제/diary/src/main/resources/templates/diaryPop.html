@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>웹 페이지 메시지</title>
+</head>
+<body>
+    <script>
+        const a = confirm("저장되었습니다. (확인 : 내용조회, 취소 : 다시작성)");
+        if(a == true)
+            location.href = "/diaryList";
+        else
+            location.href = "/diary";
+    </script>
+</body>
+</html>
