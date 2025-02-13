@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>결과</title>
+    <style>
+        #td2 { color:blue; text-align: right; }
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h2>투표 결과</h2>
+        <table border="1">
+            <tr>
+                <th>이름</th> <th>우승 횟수</th>
+            </tr>
+            <tr th:each="a:${arr}">
+                <td th:text="${a.name}">이름</td>
+                <td th:text="${a.fcount}" id="td2">우승 횟수</td>
+            </tr>
+        </table>
+
+        <button onclick="location.href='/star/reset'">투표결과 초기화</button>
+        <p>
+            <a href="/star/1">4강전 다시 시작</a>
+        </p>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>iamAnswer</title>
+    <style>
+        span {color:blue; font-weight:bold;}
+    </style>
+</head>
+<body>
+    저는 <span th:text="${age}"></span>세 <span th:text="${gender}"></span>학생입니다.<br>
+    좋아하는 음식은 다음과 같습니다.<br>
+    <span th:each="food : ${foods}" th:utext="${food + '<br>'}"></span>
+
+    <br>
+    저의 자신감수치(1~5)는 다음과 같습니다.
+    <br>
+    외모 자신감 : <span th:text="${handsome}"></span><br>
+    학점 자신감 : <span th:text="${grade}"></span><br>
+    수업 자신감 : <span th:text="${organized}"></span> <br>
+
+    <span th:text="${promote}" style="color:black"></span>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>축하합니다</title>
+    <style>
+        img {width : 600px; height : 600px}
+        body { background-color: chocolate;}
+    </style>
+</head>
+<body>
+    <div align="center">
+        <h2>Congratulation</h2>
+        승자는 <span th:text="${finalWinner}"></span>입니다.
+        <p>
+            <img th:src="|/${finalWinner}.png|">
+        </p>
+
+        <a href="/star/result">결과보기</a>
+    </div>
+</body>
+</html>

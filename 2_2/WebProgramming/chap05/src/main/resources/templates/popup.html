@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>안내글</title>
+</head>
+
+<body>
+    <script th:inline="javascript">
+        const m = [[${msg}]];
+        const u = [[${url}]];
+        
+        alert(m);
+        
+        if (u == 'back')
+            history.back(); // 뒤로가기, 이거는 데이터를 가지고 있음
+            // location.href = "/member/new" // 얘는 입력한 정보가 날아감
+        
+        else
+            location.href = u; 
+    </script>
+</body>
+
+</html>

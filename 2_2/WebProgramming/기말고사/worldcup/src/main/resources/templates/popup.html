@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>팝업</title>
+    <style>
+        table { border-collapse : collapse; }
+    </style>
+</head>
+<body>
+    <script th:inline="javascript">
+        m = [[${msg}]];
+        u = [[${url}]];
+
+        alert(m);
+
+        if(u == "back") {
+            history.back();
+        }
+
+        else
+            location.href=u;
+    </script>
+</span>
+</body>
+</html>

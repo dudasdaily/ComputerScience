@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>자기 소개</title>
+    <style>
+        fieldset { width: 400px; border:1px solid orange;}
+        legend { color : gray; }
+        button {padding-right:5px;}
+    </style>
+</head>
+<body>
+    <h2>자기 소개</h2>
+
+    <form action="/iam/answer">
+        <fieldset>
+            <legend>성별과 나이를 입력하세요.</legend>
+            성별 : <input type="radio" name="gender" value="남자">남자
+                    <input type="radio" name="gender" value="여자">여자
+            <br>
+            나이 : <input type="text" name="age">
+        </fieldset>
+        <br>
+
+        <fieldset>
+            <legend>관심있는 식문화를 선택하세요.(복수 가능)</legend>
+            <input type="checkbox" name="foods" value="소주삼겹살">소주에 삼겹살
+            <input type="checkbox" name="foods" value="치맥">치맥
+            <input type="checkbox" name="foods" value="마라탕">마라탕
+            <input type="checkbox" name="foods" value="딸기케이크">딸기 케이크
+        </fieldset>
+
+        <fieldset>
+            <legend>나의 자신감은 어느 정도인가?</legend>
+            나는 무지 잘 생겼다.<input type="range" name="handsome" min="1" max="5" value="3">
+            <br>
+            나는 마음막 먹으면 A+ 이다. <input type="range" name="grade" min="1" max="5" value="3">
+            <br>
+            수업 중 산만해 보여도 머리속에는 내용이 잘 정리되어 있다.<br>
+            <input type="range" name="organized" min="1" max="5" value="3">
+            <br>
+        </fieldset>
+
+        <textarea name="promote" rows="10" cols="40" placeholder="Promote yourself"></textarea>
+        
+        <p>
+        <button type="submit">작성완료</button> <button type="reset">새로작성</button> 
+        </p>
+    </form>
+    
+</body>
+</html>

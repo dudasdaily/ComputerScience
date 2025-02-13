@@ -10,7 +10,13 @@
         }
 
         table {
+            border : 2px solid darkgray;
             width: 600px;
+            border-collapse: collapse;
+        }
+
+        tr, td, th {
+            border : 2px solid gray;
         }
 
         #td1 {
@@ -22,13 +28,17 @@
             color: red;
             text-align: right;
         }
+
+        #td3 {
+            text-align: center;
+        }
     </style>
 </head>
 
 <body>
     <div align="center">
         <h3> 전체 회원 리스트</h3>
-        <table border="1">
+        <table>
             <tr>
                 <th>mid
                 <th>pw
@@ -42,10 +52,10 @@
                 <td th:text="${a.name}">name
                 <td th:text="${a.phone}">phone
                 <td th:text="${a.mileage}" id="td2">mileage
-                <td th:text="${a.rdate}">rdate
+                <td th:text="${a.rdate}" id="td3">rdate
         </table>
         <p>
-            DB 연결 성공 축하축하!!!
+            <a href="/member/new">회원가입 화면으로</a>
     </div>
 </body>
 

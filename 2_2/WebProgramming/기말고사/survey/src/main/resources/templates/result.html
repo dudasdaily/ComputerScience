@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>설문 결과</title>
+    <style>
+        .sp1 {color:blue;}
+    </style>
+</head>
+<body>
+    <span th:text="${userid}"></span> 님은 <br>
+    <span th:text="${artist}" class="sp1"></span> 화가님과 <br>
+    <span th:text="${musician}" class="sp1"></span> 음악가님을 선택하셨습니다. <br>
+
+    <a href="/survey/list">결과보기</a>
+</body>
+</html>
