@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package web.chap05;
 
 import java.util.List;
@@ -47,3 +48,25 @@ public class AirController {
         return "popup";
     }
 }
+=======
+package web.chap05;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class AirController {
+    @Autowired
+    private memberRep mrep;
+
+    @GetMapping("/memberList")
+    public String memberList(Model mo) {
+        List<member> arr = mrep.findAll();
+        mo.addAttribute("arr", arr);
+        return "memberList";
+    }
+} // class
+>>>>>>> d43a0f184a790fc6e8be0be95e7ea59ceea6cf59
