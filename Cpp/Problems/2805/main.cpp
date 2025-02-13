@@ -1,41 +1,61 @@
 #include <iostream>
 using namespace std;
 
-int calcMaxHeight(int trees[], int need)
+int findMax(int trees[], int n)
 {
-    int height = 0;
-    int sum = 0;
+    int max = trees[0];
 
-    while(sum <= need)
+    for(int i = 0; i < n; i++)
     {
-        height++;
-
-        for(int i = 0; i < sizeof(trees) / sizeof(int); i++)
-        {
-            
-        }
+        max = max < trees[i] ? trees[i] : max;
     }
 
-    return height;
+    return max;
 }
 
 int main()
 {
-    int treeNum; // 나무의 수
-    int need; // 필요한 나무의 총 길이
-    int height;
+    int n, m;
+    
+    cin >> n;
+    cin >> m;
 
-    cin >> treeNum;
-    cin >> need;
+    int trees[n];
 
-    int trees[treeNum];
-
-    for(int i = 0; i < treeNum; i++)
+    for(int i = 0; i < n; i++)
     {
         cin >> trees[i];
     }
-    
-    
+
+    int start = 0;
+    int end = findMax(trees, n);
+    int result = 0;
+
+    // end초기값이 배열의 최대값인데, 1씩 줄여서 0까지 체크
+    while(start <= end)
+    {
+        long long sum = 0;
+        int h = (start + end) / 2;
+
+        for(int idx = 0; idx < n; idx++)
+        {
+            if(trees[idx] > h)
+                sum += trees[idx] - h;
+        }
+
+        if(sum < m)
+        {
+            end = h - 1;
+        }
+        
+        else
+        {
+            result = h;
+            start = h + 1;
+        }
+    }
+
+    cout << result << endl;
 
     return 0;
 }
