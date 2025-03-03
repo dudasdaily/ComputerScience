@@ -1,7 +1,0 @@
-{
-    "java.compile.nullAnalysis.mode": "automatic",
-    "dotnet.defaultSolution": "CSharp.sln",
-    "files.associations": {
-        "iostream": "cpp"
-    }
-}
