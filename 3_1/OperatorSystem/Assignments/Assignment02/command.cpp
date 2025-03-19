@@ -36,7 +36,7 @@ int main()
         {"fsck", "chkdsk"},
         {"free", "mem"},
         {"debugfs", "scandisk"},
-        {"lpr", "print"}
+        {"lpr", "print"},
     };
 
     // 값 -> 키 매핑

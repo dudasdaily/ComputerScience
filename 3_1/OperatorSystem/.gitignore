@@ -1,0 +1,8 @@
+*.dSYM
+*.inp
+*.out
+test
+command
+main.cpp
+.vscode/
+.DS_Store
