@@ -14,11 +14,10 @@ public:
     int cpu_time;
     int io_time;
 
-    Thread() {}
-    Thread(int cpu_time, int io_time)
+    Thread()
     {
-        this->cpu_time = cpu_time;
-        this->io_time = io_time;
+        cpu_time = 0;
+        io_time = 0;
     }
 };
 
@@ -34,7 +33,7 @@ public:
 
     void update_thread_cpu()
     {
-        if(!cpu_burst_times.empty())
+        if(!cpu_burst_times.empty() && thread.cpu_time == 0)
         {
             thread.cpu_time = cpu_burst_times.front();
             cpu_burst_times.erase(cpu_burst_times.begin());
@@ -43,7 +42,7 @@ public:
 
     void update_thread_io()
     {
-        if(!io_burst_times.empty())
+        if(!io_burst_times.empty() && thread.io_time == 0)
         {
             thread.io_time = io_burst_times.front();
             io_burst_times.erase(io_burst_times.begin());
@@ -140,7 +139,7 @@ int main()
 
     while(true)
     {
-        
+
 
         total_time += 1;
     }
