@@ -7,6 +7,7 @@ def insertData() :
     password='mseoke0518!!', db='market_db', charset='utf8')
 
     cursor = connect.cursor()
+
     data1 = edt1.get(); data2 = edt2.get(); data3 = edt3.get(); data4 = edt4.get()
     data5 = edt5.get(); data6 = edt6.get(); data7 = edt7.get(); data8 = edt8.get()
 
@@ -63,6 +64,20 @@ def selectData() :
 
     connect.close()
 
+def deleteData():
+    connect = pymysql.connect(host='127.0.0.1', user='root',
+    password='mseoke0518!!', db='market_db', charset='utf8')
+
+    cursor = connect.cursor()
+
+    sql = "delete from member"
+
+    cursor.execute(sql)
+    
+    connect.commit()
+    connect.close()
+
+
 ## 메인 코드부
 window = tkinter.Tk()
 window.geometry("600x300")
@@ -83,8 +98,11 @@ edt8= tkinter.Entry(edtFrame, width=10); edt8.pack(side='left',padx=10,pady=10)
 btnInsert = tkinter.Button(edtFrame, text="insert", command = insertData)
 btnInsert.pack(side='left',padx=10,pady=10)
 
-btnSelect = tkinter.Button(edtFrame, text="select", command =selectData)
+btnSelect = tkinter.Button(edtFrame, text="select", command = selectData)
 btnSelect.pack(side='left',padx=10,pady=10)
+
+btnDelete = tkinter.Button(edtFrame, text="delete", command = deleteData)
+btnDelete.pack(side='left', padx=10, pady=10)
 
 listData1 = tkinter.Listbox(listFrame,bg = 'gray'); listData2 = tkinter.Listbox(listFrame,bg = 'gray')
 listData3 = tkinter.Listbox(listFrame,bg = 'gray'); listData4 = tkinter.Listbox(listFrame,bg = 'gray')
